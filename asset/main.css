@@ -1,0 +1,66 @@
+body{
+    margin:0;
+    padding:0;
+    background-color:#2ea348;
+}
+
+.login-box{
+    width:40%;
+    margin-left:auto;
+    margin-right:auto;
+    margin-top:10vh;
+    border:0.5px solid #424242;
+    border-radius:5px;
+    background-color:white;
+    box-shadow: 1px 2px 2px 1px #444444;
+
+}
+
+.login-box table{
+    padding:20px;
+    margin:20px;
+    width:100%;
+}
+
+.login-table tr, .login-table td{
+    padding:20px;
+    margin:20px;
+    
+}
+
+.login-table td:first-child{
+    width:20%;
+}
+
+.login-table td:nth-child(2){
+    width:80%;
+}
+.login-table input{
+    width:100%;
+    height:30px;
+    border-radius:5px;
+}
+
+.login-table button{
+    width:70px;
+    height:35px;
+    color:white;
+    background-color:#2ea348;
+    cursor:pointer;
+    border:none;
+    border-radius:3px;
+    margin-right:5vw;
+}
+
+.login-table button:hover{
+    
+    background-color:#207232;
+    
+}
+
+@media only screen and (max-width: 600px) {
+    .login-box{
+        width:90%;
+        margin-top:20vh;
+    }
+}
