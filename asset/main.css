@@ -1,7 +1,16 @@
+html{
+    height:100%;
+}
+
 body{
     margin:0;
     padding:0;
-    background-color:#2ea348;
+    
+    background-image:url('desktop.jpg');
+    background-size:cover;
+    background-color:rgb(8, 73, 8);
+    background-repeat:no-repeat;
+    font-family: 'Roboto', sans-serif;
 }
 
 .login-box{
@@ -11,37 +20,38 @@ body{
     margin-top:10vh;
     border:0.5px solid #424242;
     border-radius:5px;
-    background-color:white;
+    background-color:rgba(255, 255, 255, 0.8);
     box-shadow: 1px 2px 2px 1px #444444;
+    padding:20px;
 
 }
 
 .login-box table{
     padding:20px;
-    margin:20px;
-    width:100%;
+    color:#444444;
+  
 }
 
-.login-table tr, .login-table td{
+.login-box table tr, .login-box table td{
     padding:20px;
     margin:20px;
     
 }
 
-.login-table td:first-child{
+.login-box table td:first-child{
     width:20%;
 }
 
-.login-table td:nth-child(2){
+.login-box table td:nth-child(2){
     width:80%;
 }
-.login-table input{
+.login-box table input{
     width:100%;
     height:30px;
     border-radius:5px;
 }
 
-.login-table button{
+.login-box table button{
     width:70px;
     height:35px;
     color:white;
@@ -49,18 +59,37 @@ body{
     cursor:pointer;
     border:none;
     border-radius:3px;
-    margin-right:5vw;
+   
 }
 
-.login-table button:hover{
+.login-box table button:hover{
     
     background-color:#207232;
     
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 768px) {
+    body{
+        background-image:url('mobile.jpg');
+        background-size:cover;
+    }
     .login-box{
         width:90%;
         margin-top:20vh;
+        padding:10px;
+    }
+    .login-box table td:first-child{
+        display:none;
+        
+    }
+    .login-box table td:nth-child(2){
+        width:100%;
+    }
+    .login-box table{
+        width:100%;
+       
+    }
+    .login-box table tr:nth-child(3) td{
+        display:table-cell;
     }
 }
