@@ -2,5 +2,7 @@
     $username="root";
     $password="";
     $servername="localhost";
-    $dbname="";
+    $dbname="smartgha";
+
+    $conn = new mysqli($servername,$username,$password,$dbname);
 ?>

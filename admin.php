@@ -53,6 +53,7 @@
                     <li class="active"><a data-toggle="tab" href="#main" onclick="collapseNav()">Home</a></li>
                     <li><a data-toggle="tab" href="#sensors" onclick="collapseNav()">Sensors Data</a></li>
                     <li><a data-toggle="tab" href="#utilities" onclick="collapseNav()">Utilities</a></li>
+                    <li><a data-toggle="tab" href="#members" onclick="collapseNav()">Members</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <!-- <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li> -->
@@ -193,6 +194,80 @@
                     </div>
                 </div>
             </div>
+
+<?php
+    $sql="select `username`, `email`, `member_type` from `user` order by `member_type` asc, `username` asc;";
+    $result=$conn->query($sql);
+?>
+<!-- Members Tab -->
+            <div id="members" class="tab-pane fade in">
+                <div class="row">
+                    <div class="col-lg-6 col-xs-12">
+                        <h3>Members</h3>
+                        <table class="member-list">
+                            <thead>
+                                <th>Username</th>
+                                <th>Email Address</th>
+                                <th>Member Type</th>
+                                <th>Actions</th>
+                            </thead>
+                            <tbody>
+<?php while($row=$result->fetch_assoc()): ?>
+                                <tr id="<?=$row['username']?>">
+                                    <td><?=$row['username']?></td>
+                                    <td><a href="#" onclick="mailto:<?=$row['email']?>;"><?=$row['email']?></a></td>
+                                    <td><?=$row['member_type']?></td>
+                                    <td>
+                                        <span id="change-button" title="Change Membership" onclick="changeUser('<?=$row['username']?>')" class="glyphicon glyphicon-user"></span>
+                                        <span id="delete-button" title="Delete User" onclick="deleteUser('<?=$row['username']?>','<?=$_COOKIE['username']?>')" class="glyphicon glyphicon-remove"></span>
+                                    </td>
+                                </tr>
+<?php endwhile;?>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="col-lg-6 col-xs-12">
+                        <h3>Add New Member</h3>
+                        <form id="new-form" action="addUser.php" method="POST" onsubmit="checkAll()">
+                            <div class="form-card">
+                                <table class="new-member">
+                                    <tr>
+                                        <td>Username:</td>
+                                        <td><input id="new-user" type="text" name="username" placeholder="Login ID" required></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Password:</td>
+                                        <td><input id="pass-check" type="password" name="pass" placeholder="Password" required></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Confirm Password:</td>
+                                        <td><input id="new-pass" type="password" placeholder="Retype Password" required></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Email Address:</td>
+                                        <td><input type="email" placeholder="Email Address" name="email" required></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Member Type:</td>
+                                        <td>
+                                            <select name="member_type">
+                                                <option selected>Member</option>
+                                                <option>Admin</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan=2 ><button type="submit" name="submit" value="submit">Submit</button></td>
+                                    </tr>
+                                        
+                                </table>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
 <!-- Temperature Chart Modal -->
