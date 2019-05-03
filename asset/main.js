@@ -16,6 +16,8 @@ $(document).ready(function(){
     };
 });
 
+
+
 function collapseNav(){
     var navbar=document.getElementById("myNavbar");
     navbar.classList.remove("in");
