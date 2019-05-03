@@ -32,7 +32,8 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-    <script src="asset/main.js"></script>
+    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+    
     <link rel="stylesheet" type="text/css" media="screen" href="asset/main.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:bold" rel="stylesheet"> 
     <title>Smart Greenhouse Application</title>
@@ -270,6 +271,32 @@
 
         </div>
     </div>
+
+<?php
+    include('dbconn.php');
+    $query = 'SELECT `temperature`,`humidity`,`moisture`,`ecsensor`,`time` AS `datetime` FROM `data` ORDER BY `time` DESC limit 100';
+
+    $result = mysqli_query($conn, $query);
+    $tempTable = array();
+    $humidTable = array();
+    $moistTable = array();
+    $ecTable = array();
+
+
+    while($row = mysqli_fetch_array($result))
+    {
+        $time=$row["datetime"];
+        $temp=$row["temperature"];
+        $humid=$row["humidity"];
+        $moist=$row["moisture"];
+        $ec=$row["ecsensor"];
+        $tempTable[] =  array("x" => "new Date('$time'), y:$temp");
+        $humidTable[] =  array("x" => "new Date('$time'), y:$humid");
+        $moistTable[] =  array("x" => "new Date('$time'), y:$moist");
+        $ecTable[] =  array("x" => "new Date('$time'), y:$ec");
+    }
+
+?>
 <!-- Temperature Chart Modal -->
     <div id="temperature-data" class="modal fade" role="dialog">
         <div class="modal-dialog">
@@ -281,7 +308,15 @@
                     <h4 class="modal-title">Temperature</h4>
                 </div>
                 <div class="modal-body">
-                    <?php include 'charts/temperature.php'; ?>
+                    <?php 
+                        $jsonTable = json_encode($tempTable);
+                        $jsonTable=str_replace('"','',$jsonTable);
+                        $yAxis="Temperature in °C";
+                        $title="Temperature";
+                        $id="temp-chart";
+                        $chart="temp";
+                        include 'charts/line-chart.php'; 
+                    ?>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -300,7 +335,15 @@
                     <h4 class="modal-title">Humidity</h4>
                 </div>
                 <div class="modal-body">
-                    <?php include 'charts/humidity.php'; ?>
+                    <?php 
+                        $jsonTable = json_encode($humidTable);
+                        $jsonTable=str_replace('"','',$jsonTable);
+                        $yAxis="Humidity in %";
+                        $title="Humidity";
+                        $id="humid-chart";
+                        $chart="humid";
+                        include 'charts/line-chart.php'; 
+                    ?>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -320,7 +363,15 @@
                     <h4 class="modal-title">Moisture</h4>
                 </div>
                 <div class="modal-body">
-                    <?php include 'charts/moisture.php'; ?>
+                    <?php 
+                        $jsonTable = json_encode($moistTable);
+                        $jsonTable=str_replace('"','',$jsonTable);
+                        $yAxis="Moisture";
+                        $title="Moisture";
+                        $id="moist-chart";
+                        $chart="moist";
+                        include 'charts/line-chart.php'; 
+                    ?>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -340,7 +391,15 @@
                     <h4 class="modal-title">EC Sensor</h4>
                 </div>
                 <div class="modal-body">
-                    <?php include 'charts/ecsensor.php'; ?>
+                    <?php 
+                        $jsonTable = json_encode($ecTable);
+                        $jsonTable=str_replace('"','',$jsonTable);
+                        $yAxis="EC Sensor in ppm";
+                        $title="EC Sensor";
+                        $id="ec-chart";
+                        $chart="ec";
+                        include 'charts/line-chart.php'; 
+                    ?>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -348,5 +407,8 @@
             </div>
         </div>
     </div>
+    
+    <script src="asset/main.js"></script>
+
 </body>
 </html>
