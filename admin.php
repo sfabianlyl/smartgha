@@ -73,16 +73,56 @@
                         <h3>Overview Sensors</h3>
                         <div class="main-sensor">
                             <div class="summary-card">
-                                Temperature: <span><?=$temperature?> &deg;C</span>
+                                <div class="row">       
+                                    <div class="col-lg-4 col-xs-4">
+                                        Temperature: 
+                                    </div>     
+                                    <div class="col-lg-4 col-xs-4">
+                                        <meter value="<?=$temperature?>" min="25" max="40"></meter> 
+                                    </div> 
+                                    <div class="col-lg-4 col-xs-4">
+                                        <span><?=$temperature?> &deg;C</span>
+                                    </div>                     
+                                </div>
                             </div>
                             <div class="summary-card">
-                                Humidity: <span><?=$humidity?> %</span>
+                                <div class="row">       
+                                    <div class="col-lg-4 col-xs-4">
+                                        Humidity: 
+                                    </div>     
+                                    <div class="col-lg-4 col-xs-4">
+                                        <meter value="<?=$humidity?>" min="0" max="100"></meter>
+                                    </div> 
+                                    <div class="col-lg-4 col-xs-4">
+                                        <span><?=$humidity?> %</span>
+                                    </div>                     
+                                </div>
                             </div>
                             <div class="summary-card">
-                                Moisture: <span><?=$moisture?></span>
+                                <div class="row">       
+                                    <div class="col-lg-4 col-xs-4">
+                                        Moisture: 
+                                    </div>     
+                                    <div class="col-lg-4 col-xs-4">
+                                        <meter value="<?=$moisture?>" min="200" max="1024"></meter>
+                                    </div> 
+                                    <div class="col-lg-4 col-xs-4">
+                                        <span><?=$moisture?></span>
+                                    </div>                     
+                                </div>     
                             </div>
                             <div class="summary-card">
-                                EC Sensor: <span><?=$ecsensor?> ppm</span>
+                                <div class="row">       
+                                    <div class="col-lg-4 col-xs-4">
+                                        EC Sensor:
+                                    </div>     
+                                    <div class="col-lg-4 col-xs-4">
+                                        <meter value="<?=$ecsensor?>" min="0" max="100"></meter>
+                                    </div> 
+                                    <div class="col-lg-4 col-xs-4">
+                                        <span><?=$ecsensor?> ppm</span>
+                                    </div>                     
+                                </div>      
                             </div>
                         </div>
                     </div>
