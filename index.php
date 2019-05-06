@@ -182,6 +182,13 @@
                             </a>
                         </div>
                     </div>
+                    <div class="content-sensor">
+                        <div class="row justify-content-center d-lg-flex d-xs-flex">
+                            <div class="col-lg-1 col-xs-6">
+                                <a href="download.php"><button type="button" class="btn btn-success">Download Excel</button></a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 

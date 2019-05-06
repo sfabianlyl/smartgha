@@ -91,6 +91,7 @@
                                         Humidity: 
                                     </div>     
                                     <div class="col-lg-4 col-xs-4">
+                                        
                                         <meter value="<?=$humidity?>" min="0" max="100"></meter>
                                     </div> 
                                     <div class="col-lg-4 col-xs-4">
@@ -182,6 +183,14 @@
                                     <div class="card-footer">EC Sensor</div>
                                 </div>
                             </a>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="content-sensor">
+                    <div class="row justify-content-center d-lg-flex d-xs-flex">
+                        <div class="col-lg-1 col-xs-6">
+                            <a href="download.php"><button type="button" class="btn btn-success">Download Excel</button></a>
                         </div>
                     </div>
                 </div>
