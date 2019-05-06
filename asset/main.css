@@ -270,4 +270,8 @@ hr{
         width:90%;
     }
     
+    meter{
+        display:none;
+    }
+    
 }
